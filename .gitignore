@@ -1,0 +1,10 @@
+node_modules
+*.log
+.DS_Store
+.idea
+.vscode
+public/*.html
+public/*.js
+public/*.br
+public/*.gz
+dist
