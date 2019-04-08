@@ -6,16 +6,14 @@ A simple (50 lines) approach of utilizing window.onpopstate. Use router.svelte f
 
 ## Pre-render
 
-A simple (7 lines) approach to make the routes accessable with static webhosting. You should pass all the routes you want to pre-render as cli arguments to this script:
+A simple (10 lines) approach to make the routes accessable with static webhosting. You should pass all the routes you want to pre-render as cli arguments to this script:
+
+## Setup
 
 ```bash
-cd public
-for page in "$@"
-do
-    rm -rf "$page"
-    mkdir "$page"
-    cp index.html "$page/."
-done  
+yarn
+yarn dev # development
+yarn generate # pre-rendered public folder
 ```
 
 ## Deploying to the web
