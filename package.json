@@ -1,109 +1,28 @@
 {
-  "license": "MIT",
-  "scripts": {
-    "dev": "parcel app/index.html --open",
-    "build": "parcel build app/index.html --no-source-maps -d public",
-    "lint": "eslint app/**/*.js app/**/*.svelte app/**/*.html",
-    "fix": "eslint --fix app/**/*.js app/**/*.svelte app/**/*.html"
-  },
-  "dependencies": {},
+  "name": "svelte-spa",
+  "version": "1.0.0",
+  "license": "CC-BY-NC-ND-4.0",
+  "author": "Tony Rewin <anton.rewin@gmail.com>",
+  "private": true,
   "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-env": "^1.7.0",
-    "parcel-bundler": "^1.11.0",
-    "parcel-plugin-compress": "^1.0.9",
-    "parcel-plugin-inliner": "^1.0.6",
-    "parcel-plugin-svelte": "DeMoorJasper/parcel-plugin-svelte",
-    "postcss": "^7.0.14",
-    "postcss-remove-unused-css": "^1.0.4",
+    "npm-run-all": "^4.1.5",
+    "rollup": "^1.9.0",
+    "rollup-plugin-commonjs": "^9.3.4",
+    "rollup-plugin-node-resolve": "^4.2.1",
+    "rollup-plugin-svelte": "^5.0.3",
+    "rollup-plugin-terser": "^4.0.4",
     "svelte": "^3.0.0-beta.22"
   },
-  "optionalDependencies": {
-    "eslint": "^5.16.0",
-    "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-friendly-formatter": "^4.0.1",
-    "eslint-plugin-html": "^5.0.3",
-    "eslint-plugin-import": "^2.16.0",
-    "eslint-plugin-no-loops": "^0.3.0",
-    "eslint-plugin-promise": "^4.1.1",
-    "eslint-plugin-svelte3": "^0.4.7",
-    "eslint-plugin-unicorn": "^8.0.1"
+  "scripts": {
+    "build": "rollup -c",
+    "watch": "rollup -c -w",
+    "dev": "run-p start watch",
+    "start": "cd public && python -m SimpleHTTPServer",
+    "prerender": "./prerender.sh",
+    "generate": "run-p build prerender"
   },
-  "babel": {
-    "presets": [
-      "env"
-    ]
-  },
-  "browserslist": [
-    ">0.6%",
-    "not ie 11",
-    "not op_mini all"
-  ],
-  "postcss": {
-    "plugins": {
-      "autoprefixer": {},
-      "postcss-remove-unused-css": {
-        "path": "./app",
-        "exts": [
-          ".js",
-          ".svelte",
-          ".html"
-        ]
-      }
-    }
-  },
-  "eslintConfig": {
-    "extends": [
-      "eslint:recommended",
-      "plugin:promise/recommended",
-      "plugin:unicorn/recommended",
-      "airbnb-base"
-    ],
-    "plugins": [
-      "promise",
-      "no-loops",
-      "unicorn",
-      "html",
-      "svelte3"
-    ],
-    "parserOptions": {
-      "parser": "babel-eslint",
-      "ecmaVersion": 8,
-      "sourceType": "module",
-      "ecmaFeatures": {
-        "modules": true
-      }
-    },
-    "settings": {
-      "import/core-modules": [
-        "svelte"
-      ],
-      "svelte3/extensions": [
-        ".html",
-        ".svelte"
-      ]
-    },
-    "globals": {
-      "document": true
-    },
-    "rules": {
-      "semi": "off",
-      "max-len": [
-        "error",
-        {
-          "code": 80
-        }
-      ],
-      "quotes": [
-        "error",
-        "double"
-      ],
-      "no-new": "off",
-      "promise/prefer-await-to-callbacks": "warning",
-      "promise/prefer-await-to-then": "warning",
-      "no-loops/no-loops": 2,
-      "svelte/named-export": "off"
-    }
+  "engines": {
+    "node": "11.x.x",
+    "yarn": "1.x.x"
   }
 }

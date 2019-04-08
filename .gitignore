@@ -1,10 +1,6 @@
-node_modules
-*.log
 .DS_Store
-.idea
-.vscode
-public/*.html
-public/*.js
-public/*.br
-public/*.gz
-dist
+node_modules
+public/bundle.*
+package-lock.json
+yarn.lock
+public/*/index.html
