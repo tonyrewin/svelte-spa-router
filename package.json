@@ -19,10 +19,12 @@
     "dev": "run-p start watch",
     "start": "cd public && python -m SimpleHTTPServer",
     "prerender": "./prerender.sh",
-    "generate": "run-p build prerender"
+    "generate": "run-p build prerender",
+    "now-build": "npm run generate"
   },
   "engines": {
-    "node": "11.x.x",
-    "yarn": "1.x.x"
+    "node" : ">=8.0.0",
+    "yarn": ">=1.0.0",
+    "npm": ">=6.5.0"
   }
 }

@@ -4,7 +4,7 @@ export let component
 import { onMount } from 'svelte'
 import pages from './pages'
 
-const pathByName = n => n==='Home'? '' : '/' + n.toLowerCase(),
+const pathByName = n => n==='home'? '' : '/' + n,
 	pageByPath = p => {
 		if(p === '/' || p === '') return pages.home
 		if(p && p[0]==='/') {
@@ -14,7 +14,7 @@ const pathByName = n => n==='Home'? '' : '/' + n.toLowerCase(),
 		return pages[p.toLowerCase()]
 	}
 export const navigateTo = n => {
-		let p = pathByName(n)
+		let p = pathByName(n.toLowerCase())
 		window.history.pushState( {}, p, window.location.origin + p )
 		component = pageByPath(p)
 	}
@@ -33,7 +33,7 @@ component = pageByPath(window.location.pathname)
 			<li>
 				<a 
 					on:click|preventDefault={()=>navigateTo(page.name)} 
-					href={pathByName(page.name)}>{page.name}</a>
+					href={pathByName(page.name.toLowerCase())}>{page.name}</a>
 			</li>
 		{/if}
 	{/each}
